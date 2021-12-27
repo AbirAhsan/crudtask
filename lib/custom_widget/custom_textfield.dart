@@ -7,22 +7,26 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final String? labelText;
   final String? hintText;
+  final String? initialValue;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
 
-  const CustomTextField(
-      {Key? key,
-      this.controller,
-      this.keyboardType,
-      this.validator,
-      this.obscureText = false,
-      this.labelText,
-      this.hintText,
-      this.suffixIcon,
-      this.prefixIcon,
-      this.onChanged})
-      : super(key: key);
+  const CustomTextField({
+    Key? key,
+    this.controller,
+    this.keyboardType,
+    this.validator,
+    this.obscureText = false,
+    this.labelText,
+    this.hintText,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.onChanged,
+    this.onSaved,
+    this.initialValue,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +37,10 @@ class CustomTextField extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: TextFormField(
           controller: controller,
+          initialValue: initialValue,
           keyboardType: keyboardType,
           onChanged: onChanged,
+          onSaved: onSaved,
           validator: validator,
           obscureText: obscureText,
           decoration: InputDecoration(

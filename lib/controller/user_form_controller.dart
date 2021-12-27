@@ -7,13 +7,14 @@ class UserFormController extends GetxController {
   RxBool isNewUser = false.obs;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  late TextEditingController nameCtrl = TextEditingController();
-  late TextEditingController jobCtrl = TextEditingController();
+  late TextEditingController nameCtrl, jobCtrl;
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    nameCtrl = TextEditingController();
+    jobCtrl = TextEditingController();
+    super.onInit();
+  }
 
   updateUser(int userID) async {
     await UserFormRemoteService()
@@ -34,7 +35,7 @@ class UserFormController extends GetxController {
   }
 
   String? validateName(String value) {
-    if (!GetUtils.isUsername(value)) {
+    if (value.isEmpty || value.length < 3) {
       return "Provide Valid Name";
     }
     return null;

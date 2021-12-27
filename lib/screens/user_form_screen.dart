@@ -42,11 +42,13 @@ class UserFormScreen extends GetView<UserFormController> {
                     labelText: "Name",
                     hintText: "ex. Robert",
                     controller: formCtrl.nameCtrl,
-                    onChanged: (value) {
-                      formCtrl.nameCtrl.text = value;
-                    },
                     validator: (value) {
                       return formCtrl.validateName(value!);
+                    },
+                    onChanged: (val) {
+                      formCtrl.nameCtrl.text = val;
+                      formCtrl.nameCtrl.selection = TextSelection.fromPosition(
+                          TextPosition(offset: formCtrl.nameCtrl.text.length));
                     },
                   ),
                   CustomTextField(
@@ -57,6 +59,7 @@ class UserFormScreen extends GetView<UserFormController> {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      print(formCtrl.nameCtrl.text);
                       if (validateAndSave(formCtrl.formKey)) {
                         if (isNewUser) {
                           //create new
