@@ -1,3 +1,4 @@
+import 'package:crudtask/custom_widget/custom_snackbar.dart';
 import 'package:crudtask/remote_service/user_form_remote_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,17 +19,13 @@ class UserFormController extends GetxController {
   updateUser(int userID) {
     UserFormRemoteService()
         .updateUser(userID, nameCtrl.text, jobCtrl.text)
-        .then((value) {
-      print(value);
-    });
+        .then((value) {});
   }
 
   createNewUser() {
     UserFormRemoteService()
         .createUser(nameCtrl.text, jobCtrl.text)
-        .then((value) {
-      print(value);
-    });
+        .then((value) {});
   }
 
   @override

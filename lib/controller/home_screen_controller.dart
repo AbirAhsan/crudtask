@@ -1,3 +1,4 @@
+import 'package:crudtask/custom_widget/custom_snackbar.dart';
 import 'package:crudtask/model/user_data_per_page_model.dart';
 import 'package:crudtask/remote_service/homescreen_remotte_service.dart';
 import 'package:flutter/material.dart';
@@ -57,14 +58,17 @@ class HomeScreenController extends GetxController {
           isMoreDataAvailable(true);
         } else {
           isMoreDataAvailable(false);
-          print("No More Data Available");
+          CustomSnackBar(message: "No More User Available")
+              .showNormalCustomSnakbar("Stop Please");
         }
         userlist.addAll(resp.data.toList());
       }, onError: (err) {
-        print(err.toString());
+        CustomSnackBar(isWarning: true, message: err.toString())
+            .showCustomSnakbar();
       });
     } catch (er) {
-      print(er.toString());
+      CustomSnackBar(isWarning: true, message: er.toString())
+          .showCustomSnakbar();
     }
   }
 
@@ -73,9 +77,11 @@ class HomeScreenController extends GetxController {
     HomeScreenRemoteService().deleteUser(user.id).then((value) {
       if (value) {
         userlist.remove(user);
-        print("User is deleted");
+        CustomSnackBar(isWarning: false, message: "User Removed")
+            .showCustomSnakbar();
       } else {
-        print("Somthing is wrong");
+        CustomSnackBar(isWarning: true, message: "Something Worng")
+            .showCustomSnakbar();
       }
     });
   }

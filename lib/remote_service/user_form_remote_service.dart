@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:crudtask/custom_widget/custom_snackbar.dart';
 import 'package:crudtask/vaiables/all_variables.dart';
 import 'package:http/http.dart' as http;
 
 class UserFormRemoteService {
+  //
+  //<================== Create User
+  //
   Future createUser(String? name, String? job) async {
     Uri userCreateUrl = Uri.parse("$baseUrl/api/users");
 
@@ -16,12 +20,24 @@ class UserFormRemoteService {
     );
 
     if (response.statusCode == 201) {
-      return jsonDecode(response.body)["name"];
+      CustomSnackBar(
+              isWarning: false,
+              message: "User Created for ${jsonDecode(response.body)["name"]}")
+          .showCustomSnakbar();
+      print(jsonDecode(response.body)["createdAt"]);
+      return jsonDecode(response.body)["createdAt"];
     } else {
+      CustomSnackBar(
+        isWarning: true,
+        message: "Error Code ${response.statusCode}",
+      ).showCustomSnakbar();
       return response.statusCode.toString();
     }
   }
 
+//
+//<==================== Update User
+//
   Future updateUser(int userID, String? name, String? job) async {
     Uri userUpdateUrl = Uri.parse("$baseUrl/api/users/$userID");
 
@@ -34,9 +50,16 @@ class UserFormRemoteService {
     );
 
     if (response.statusCode == 200) {
+      CustomSnackBar(
+              isWarning: false,
+              message: "Last Updated ${jsonDecode(response.body)["updatedAt"]}")
+          .showCustomSnakbar();
       return jsonDecode(response.body)["updatedAt"];
     } else {
-      print("someting Wrong");
+      CustomSnackBar(
+        isWarning: true,
+        message: "Error Code ${response.statusCode}",
+      ).showCustomSnakbar();
     }
   }
 }
