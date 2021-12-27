@@ -16,9 +16,16 @@ class UserFormController extends GetxController {
   }
 
   updateUser(int userID) {
-    print(nameCtrl.text);
     UserFormRemoteService()
         .updateUser(userID, nameCtrl.text, jobCtrl.text)
+        .then((value) {
+      print(value);
+    });
+  }
+
+  createNewUser() {
+    UserFormRemoteService()
+        .createUser(nameCtrl.text, jobCtrl.text)
         .then((value) {
       print(value);
     });

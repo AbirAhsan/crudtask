@@ -54,6 +54,7 @@ class UserFormScreen extends StatelessWidget {
                     onPressed: () {
                       if (isNewUser) {
                         //create new
+                        formCtrl.createNewUser();
                       } else {
                         //update
                         formCtrl.updateUser(user!.id);
