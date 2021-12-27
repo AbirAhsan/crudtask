@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
+    final HomeScreenController homeCtrl = Get.put(HomeScreenController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("User List"),
@@ -17,6 +17,30 @@ class HomePage extends StatelessWidget {
       body: SizedBox(
         height: _height,
         width: _width,
+        child: Obx(() {
+          return ListView.builder(
+            controller: homeCtrl.scrollController,
+            itemCount: homeCtrl.userlist.length,
+            itemBuilder: (context, index) {
+              if (index == homeCtrl.userlist.length - 1 &&
+                  homeCtrl.isMoreDataAvailable.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.red,
+                  height: 100,
+                  child: Center(
+                    child: Text(homeCtrl.userlist[index].firstName),
+                  ),
+                ),
+              );
+            },
+          );
+        }),
       ),
     );
   }
