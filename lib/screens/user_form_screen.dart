@@ -1,14 +1,21 @@
+import 'package:crudtask/controller/user_form_controller.dart';
 import 'package:crudtask/custom_widget/custom_textfield.dart';
+import 'package:crudtask/model/user_data_per_page_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UserFormScreen extends StatelessWidget {
   final bool isNewUser;
-  const UserFormScreen({Key? key, required this.isNewUser}) : super(key: key);
+  final Data? user;
+  const UserFormScreen({Key? key, required this.isNewUser, this.user})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    final UserFormController formCtrl = Get.put(UserFormController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text(isNewUser ? "Create New User" : "Update User"),
@@ -22,6 +29,7 @@ class UserFormScreen extends StatelessWidget {
           height: _height,
           width: _width,
           child: Form(
+            key: formCtrl.formKey,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -31,15 +39,24 @@ class UserFormScreen extends StatelessWidget {
                   CustomTextField(
                     labelText: "Name",
                     hintText: "ex. Robert",
+                    controller: formCtrl.nameCtrl,
                     validator: (value) {},
                   ),
                   CustomTextField(
                     labelText: "Job",
                     hintText: "ex. Manager",
+                    controller: formCtrl.jobCtrl,
                     validator: (value) {},
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (isNewUser) {
+                        //create new
+                      } else {
+                        //update
+                        formCtrl.updateUser(user!.id);
+                      }
+                    },
                     child: Text(
                       isNewUser ? "Create" : "Update",
                     ),

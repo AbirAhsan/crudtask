@@ -19,13 +19,13 @@ class HomeScreenRemoteService {
   }
 
   Future<bool> deleteUser(int userID) async {
-    Uri userListUrl = Uri.parse("$baseUrl/api/users/$userID");
+    Uri userDeleteUrl = Uri.parse("$baseUrl/api/users/$userID");
 
     var response = await http.delete(
-      userListUrl,
+      userDeleteUrl,
     );
 
-    if (response.statusCode == 204) {
+    if (response.statusCode == 200) {
       return true;
     } else {
       return false;

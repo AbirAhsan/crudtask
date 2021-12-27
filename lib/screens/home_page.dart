@@ -1,7 +1,7 @@
 import 'package:crudtask/controller/home_screen_controller.dart';
 import 'package:crudtask/custom_widget/custom_listtile.dart';
 import 'package:crudtask/model/user_data_per_page_model.dart';
-import 'package:crudtask/screens/user_form.dart';
+import 'package:crudtask/screens/user_form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     final HomeScreenController homeCtrl = Get.put(HomeScreenController());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("User List"),
@@ -47,7 +48,10 @@ class HomePage extends StatelessWidget {
                 imageUrl: userDetails.avatar,
                 emailAddress: userDetails.email,
                 editButtonFunc: () {
-                  Get.to(const UserFormScreen(isNewUser: false));
+                  Get.to(UserFormScreen(
+                    isNewUser: false,
+                    user: userDetails,
+                  ));
                 },
                 deleteButtonFunc: () {
                   homeCtrl.deleteUser(userDetails);

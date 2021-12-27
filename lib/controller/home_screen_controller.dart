@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
 class HomeScreenController extends GetxController {
-  // RxBool isLoading = true.obs;
   ScrollController scrollController = ScrollController();
-  //UserListServices userListServices = UserListServices();
   RxList<Data> userlist = List<Data>.empty(growable: true).obs;
   int page = 1;
   RxBool isMoreDataAvailable = true.obs;
