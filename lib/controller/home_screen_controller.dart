@@ -1,5 +1,5 @@
 import 'package:crudtask/model/user_data_per_page_model.dart';
-import 'package:crudtask/remote_service.dart/homescreen_remotte_service.dart';
+import 'package:crudtask/remote_service/homescreen_remotte_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 

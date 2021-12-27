@@ -1,4 +1,6 @@
 import 'package:crudtask/controller/home_screen_controller.dart';
+import 'package:crudtask/custom_widget/custom_listtile.dart';
+import 'package:crudtask/model/user_data_per_page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,21 +24,19 @@ class HomePage extends StatelessWidget {
             controller: homeCtrl.scrollController,
             itemCount: homeCtrl.userlist.length,
             itemBuilder: (context, index) {
+              Data userDetails = homeCtrl.userlist[index];
               if (index == homeCtrl.userlist.length - 1 &&
                   homeCtrl.isMoreDataAvailable.value) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  color: Colors.red,
-                  height: 100,
-                  child: Center(
-                    child: Text(homeCtrl.userlist[index].firstName),
-                  ),
-                ),
+              return CustomListTile(
+                name: "${userDetails.firstName} ${userDetails.lastName}",
+                imageUrl: userDetails.avatar,
+                emailAddress: userDetails.email,
+                editButtonFunc: () {},
+                deleteButtonFunc: () {},
               );
             },
           );
