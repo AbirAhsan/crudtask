@@ -18,6 +18,7 @@ class UserFormController extends GetxController {
     super.onInit();
   }
 
+//<===================== Update user
   updateUser(int userID) async {
     CustomEassyLoading().startLoading();
     await UserFormRemoteService()
@@ -28,6 +29,7 @@ class UserFormController extends GetxController {
     ).then((value) => Get.back());
   }
 
+//<<================ create New User
   createNewUser() {
     CustomEassyLoading().startLoading();
     UserFormRemoteService()
@@ -40,6 +42,7 @@ class UserFormController extends GetxController {
     });
   }
 
+//<==================== For Validate name
   String? validateName(String value) {
     if (value.isEmpty || value.length < 3) {
       return "Provide Valid Name";
@@ -47,10 +50,10 @@ class UserFormController extends GetxController {
     return null;
   }
 
-  // @override
-  // void onClose() {
-  //   nameCtrl.dispose();
-  //   jobCtrl.dispose();
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    nameCtrl.dispose();
+    jobCtrl.dispose();
+    super.onClose();
+  }
 }
