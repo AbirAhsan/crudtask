@@ -1,15 +1,15 @@
 import 'package:crudtask/controller/user_form_controller.dart';
 import 'package:crudtask/custom_widget/custom_textfield.dart';
 import 'package:crudtask/model/user_data_per_page_model.dart';
+import 'package:crudtask/services/form_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UserFormScreen extends StatelessWidget {
+class UserFormScreen extends GetView<UserFormController> {
   final bool isNewUser;
   final Data? user;
   const UserFormScreen({Key? key, required this.isNewUser, this.user})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -42,7 +42,12 @@ class UserFormScreen extends StatelessWidget {
                     labelText: "Name",
                     hintText: "ex. Robert",
                     controller: formCtrl.nameCtrl,
-                    validator: (value) {},
+                    onChanged: (value) {
+                      formCtrl.nameCtrl.text = value;
+                    },
+                    validator: (value) {
+                      return formCtrl.validateName(value!);
+                    },
                   ),
                   CustomTextField(
                     labelText: "Job",
@@ -52,12 +57,15 @@ class UserFormScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      if (isNewUser) {
-                        //create new
-                        formCtrl.createNewUser();
-                      } else {
-                        //update
-                        formCtrl.updateUser(user!.id);
+                      if (validateAndSave(formCtrl.formKey)) {
+                        if (isNewUser) {
+                          //create new
+
+                          formCtrl.createNewUser();
+                        } else {
+                          //update
+                          formCtrl.updateUser(user!.id);
+                        }
                       }
                     },
                     child: Text(

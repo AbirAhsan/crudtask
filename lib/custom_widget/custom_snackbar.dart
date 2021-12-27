@@ -21,7 +21,7 @@ class CustomSnackBar {
         borderRadius: 20,
         margin: const EdgeInsets.all(15),
         colorText: Colors.white,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 1),
         isDismissible: true,
         forwardAnimationCurve: Curves.easeOutBack,
       );
@@ -35,7 +35,7 @@ class CustomSnackBar {
         borderRadius: 20,
         margin: const EdgeInsets.all(15),
         colorText: Colors.white,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 1),
         isDismissible: true,
         forwardAnimationCurve: Curves.easeOutBack,
       );
@@ -52,7 +52,7 @@ class CustomSnackBar {
       borderRadius: 20,
       margin: const EdgeInsets.all(15),
       colorText: Colors.white,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
       isDismissible: true,
       forwardAnimationCurve: Curves.easeOutBack,
     );
