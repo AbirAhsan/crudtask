@@ -59,6 +59,7 @@ class UserFormScreen extends GetView<UserFormController> {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       print(formCtrl.nameCtrl.text);
                       if (validateAndSave(formCtrl.formKey)) {
                         if (isNewUser) {
