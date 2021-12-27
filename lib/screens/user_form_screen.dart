@@ -15,7 +15,9 @@ class UserFormScreen extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     final UserFormController formCtrl = Get.put(UserFormController());
-
+    if (!isNewUser) {
+      formCtrl.nameCtrl.text = "${user!.firstName} ${user!.lastName}";
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(isNewUser ? "Create New User" : "Update User"),
