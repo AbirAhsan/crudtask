@@ -1,5 +1,5 @@
-import 'package:crudtask/custom_widget/custom_eassy_loading.dart';
-import 'package:crudtask/remote_service/user_form_remote_service.dart';
+import 'package:crudtask/services/network_service/user_form_remote_service.dart';
+import 'package:crudtask/views/custom_widget/custom_eassy_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';

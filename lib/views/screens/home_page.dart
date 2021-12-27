@@ -1,9 +1,10 @@
 import 'package:crudtask/controller/home_screen_controller.dart';
-import 'package:crudtask/custom_widget/custom_listtile.dart';
 import 'package:crudtask/model/user_data_per_page_model.dart';
-import 'package:crudtask/screens/user_form_screen.dart';
+import 'package:crudtask/views/custom_widget/custom_listtile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'user_form_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

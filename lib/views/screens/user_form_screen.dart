@@ -1,7 +1,7 @@
 import 'package:crudtask/controller/user_form_controller.dart';
-import 'package:crudtask/custom_widget/custom_textfield.dart';
 import 'package:crudtask/model/user_data_per_page_model.dart';
 import 'package:crudtask/services/form_validation.dart';
+import 'package:crudtask/views/custom_widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,7 +1,8 @@
-import 'package:crudtask/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/route_manager.dart';
+
+import 'views/screens/home_page.dart';
 
 void main() {
   configLoading();
