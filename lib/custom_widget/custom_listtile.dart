@@ -36,14 +36,14 @@ class CustomListTile extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.edit),
-                      onPressed: deleteButtonFunc,
+                      onPressed: editButtonFunc,
                     ),
                     IconButton(
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,
                       ),
-                      onPressed: editButtonFunc,
+                      onPressed: deleteButtonFunc,
                     ),
                   ],
                 ),

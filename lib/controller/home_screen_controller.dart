@@ -46,6 +46,7 @@ class HomeScreenController extends GetxController {
         print("Reached end");
         page++;
         getMoreTask(page);
+        update();
       }
     });
   }
@@ -67,5 +68,17 @@ class HomeScreenController extends GetxController {
     } catch (er) {
       print(er.toString());
     }
+  }
+
+  // <================ Delete User
+  void deleteUser(Data user) {
+    HomeScreenRemoteService().deleteUser(user.id).then((value) {
+      if (value) {
+        userlist.remove(user);
+        print("User is deleted");
+      } else {
+        print("Somthing is wrong");
+      }
+    });
   }
 }

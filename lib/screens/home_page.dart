@@ -36,7 +36,9 @@ class HomePage extends StatelessWidget {
                 imageUrl: userDetails.avatar,
                 emailAddress: userDetails.email,
                 editButtonFunc: () {},
-                deleteButtonFunc: () {},
+                deleteButtonFunc: () {
+                  homeCtrl.deleteUser(userDetails);
+                },
               );
             },
           );
