@@ -25,7 +25,7 @@ class HomeScreenRemoteService {
       userDeleteUrl,
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       return true;
     } else {
       return false;
