@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:crudtask/model/user_data_per_page_model.dart';
 import 'package:crudtask/services/network_service/homescreen_remotte_service.dart';
 import 'package:crudtask/views/custom_widget/custom_snackbar.dart';

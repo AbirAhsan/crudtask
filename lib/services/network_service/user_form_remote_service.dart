@@ -24,7 +24,7 @@ class UserFormRemoteService {
               isWarning: false,
               message: "User Created for ${jsonDecode(response.body)["name"]}")
           .showCustomSnakbar();
-      print(jsonDecode(response.body)["createdAt"]);
+
       return jsonDecode(response.body)["createdAt"];
     } else {
       CustomSnackBar(
