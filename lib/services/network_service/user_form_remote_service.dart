@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:crudtask/vaiables/all_variables.dart';
+import 'package:crudtask/services/vaiables/all_variables.dart';
 import 'package:crudtask/views/custom_widget/custom_snackbar.dart';
 import 'package:http/http.dart' as http;
 

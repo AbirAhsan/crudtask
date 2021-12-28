@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:crudtask/vaiables/all_variables.dart';
+import 'package:crudtask/services/vaiables/all_variables.dart';
 import 'package:http/http.dart' as http;
 import 'package:crudtask/model/user_data_per_page_model.dart';
 
